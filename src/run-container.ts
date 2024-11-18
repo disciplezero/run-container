@@ -20,7 +20,7 @@ export interface RunContainerOptions extends Docker.ContainerCreateOptions {
 export const run = async (
   opts: RunContainerOptions,
 ): Promise<Docker.Container> => {
-  const docker = new Docker({ socketPath: "/var/run/docker.sock" });
+  const docker = new Docker();
   const { Image: image, verbose = false } = opts;
   if (!(await imageExists(image))) {
     await execa(
